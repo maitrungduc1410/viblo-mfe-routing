@@ -4,7 +4,8 @@
   "main": "index.js",
   "scripts": {
     "install:all": "concurrently \"npm install --prefix angular-app\" \"npm install --prefix app-shell\" \"npm install --prefix react-app\" \"npm install --prefix vue-app\"",
-    "start": "concurrently \"npm start --prefix angular-app\" \"npm start --prefix app-shell\" \"npm start --prefix react-app\" \"npm start --prefix vue-app\""
+    "start": "concurrently \"npm start --prefix angular-app\" \"npm start --prefix app-shell\" \"npm start --prefix react-app\" \"npm start --prefix vue-app\"",
+    "postinstall": "npm run install:all"
   },
   "keywords": [],
   "author": "",
