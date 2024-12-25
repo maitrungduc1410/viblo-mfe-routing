@@ -1,0 +1,35 @@
+<ktd-grid
+  [cols]="cols"
+  [layout]="layout()"
+  [gap]="16"
+  [compactType]="'horizontal'"
+>
+  <ktd-grid-item
+    *ngFor="let item of layout(); trackBy: trackById"
+    [id]="item.id"
+    class="widget"
+  >
+    <ng-container *ngIf="getLoader(item.id) as loader">
+      <div class="widget-title">{{ loader.title }}</div>
+      <div class="widget-body" [ngSwitch]="loader.framework">
+        <app-react-wrapper
+          *ngSwitchCase="'react'"
+          [component]="loader.component"
+        ></app-react-wrapper>
+        <app-vue-wrapper
+          *ngSwitchCase="'vue'"
+          [component]="loader.component"
+        ></app-vue-wrapper>
+        <app-angular-wrapper
+          *ngSwitchDefault
+          [component]="loader.component"
+        ></app-angular-wrapper>
+      </div>
+    </ng-container>
+
+    <!-- Optional Custom placeholder template -->
+    <ng-template ktdGridItemPlaceholder>
+      <!-- Custom placeholder content goes here -->
+    </ng-template>
+  </ktd-grid-item>
+</ktd-grid>

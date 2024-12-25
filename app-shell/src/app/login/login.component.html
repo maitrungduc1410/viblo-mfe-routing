@@ -1,0 +1,23 @@
+<mat-card class="login-card">
+  <mat-card-title>Login</mat-card-title>
+  <mat-card-content>
+    <form>
+      <!-- Username Field -->
+      <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Username</mat-label>
+        <input matInput type="text" [(ngModel)]="username" name="username" required autofocus />
+      </mat-form-field>
+
+      <!-- Password Field -->
+      <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Password</mat-label>
+        <input matInput type="password" [(ngModel)]="password" name="password" required />
+      </mat-form-field>
+
+      <!-- Login Button -->
+      <div class="login-button">
+        <button mat-raised-button color="primary" (click)="login()">Login</button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

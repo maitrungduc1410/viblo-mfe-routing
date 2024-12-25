@@ -1,0 +1,47 @@
+<mat-toolbar color="primary">
+  <span>App shell</span>
+  <span class="example-spacer"></span>
+  <mat-button-toggle-group
+    name="fontStyle"
+    aria-label="Font Style"
+    [value]="viewMode()"
+    (change)="changeView($event)"
+  >
+    <mat-button-toggle value="widgetView"> Widget View</mat-button-toggle>
+    <mat-button-toggle value="appView">App View</mat-button-toggle>
+  </mat-button-toggle-group>
+  <mat-form-field
+    style="margin-left: 16px; margin-top: 20px"
+    *ngIf="viewMode() === 'appView'"
+  >
+    <mat-select>
+      @for (loader of appViewLoaders(); track loader) {
+      <mat-option [value]="loader">
+        <a [routerLink]="'/main/' + loader.routeName">{{ loader.title }}</a>
+      </mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+  <span class="example-spacer"></span>
+  Login as: {{ appService.loggedUser?.username }}
+  <button
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button with share icon"
+    (click)="logout()"
+    color="warn"
+  >
+    <mat-icon>logout</mat-icon>
+  </button>
+</mat-toolbar>
+
+<div class="container">
+  <widget-view-shell
+    *ngIf="viewMode() === 'widgetView'; else appView"
+    [loaders]="widgetLoaders()"
+  ></widget-view-shell>
+
+  <ng-template #appView>
+    <router-outlet></router-outlet>
+  </ng-template>
+</div>

@@ -1,0 +1,17 @@
+.widget {
+  border: solid 1px #ccc;
+  border-radius: 8px;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.widget-title {
+  font-weight: 500;
+  font-size: 24px;
+  border-bottom: solid 1px #ccc;
+  padding: 16px;
+}
+
+.widget-body {
+  padding: 8px;
+}
