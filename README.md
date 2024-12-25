@@ -4,7 +4,7 @@
 
 Run:
 ```
-npm run install:all
+npm run install
 
 npm start
 ```
